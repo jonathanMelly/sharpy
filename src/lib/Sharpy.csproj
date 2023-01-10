@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>$(AssemblyName)Easy</PackageId>
+    <Company>ETML</Company>
+    <Description>Outils pour développeurs en herbe (facilite l’utilisation de C# pour les débutants)</Description>
+    <Copyright>mit</Copyright>
+    <RepositoryUrl>https://github.com/jonathanMelly/sharpy</RepositoryUrl>
+    <PackageTags>csharp;beginner;blueprint</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -36,6 +36,7 @@ jobs:
         id: publish_nuget
         if: ${{ steps.release.outputs.release_created }}
         run: |
+          cd src
           dotnet pack -c Release -p:version=$version
           dotnet nuget push bin\Release\SharpyEasy.$version.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
         env:

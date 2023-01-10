@@ -4,7 +4,7 @@ on:
       - main
 name: main
 jobs:
-  release-please:
+  main:
     runs-on: ubuntu-latest
     steps:
       - name: release-please

@@ -2,7 +2,13 @@ on:
   push:
     branches:
       - main
+      
 name: main
+
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   main:
     runs-on: ubuntu-latest

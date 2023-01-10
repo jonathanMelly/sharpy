@@ -10,26 +10,23 @@ namespace Sharpy
     public class Security
     {
         /// <summary>
-        /// Convert a string into a sha256 string
+        /// Convert a string into a sha256 binary string 
         /// </summary>
         /// <param name="input">string to hash</param>
-        /// <param name="toBase64">use base64 for byte encoding (more readable)</param>
-        /// <returns>a string corresponding to hash data</returns>
-        public static string sha256(string input,bool toBase64=true)
+        /// <param name="optimize">use ISO-8859-1 binary encoding</param>
+        /// <returns>a sha256 hashed representation of input</returns>
+        public static string sha256(string input,bool optimize=false)
         {
             using (var hashGenerator = SHA256.Create())
             {
-                var hash = hashGenerator.ComputeHash(input.Select(c=>(byte)c).ToArray());
+                var hash = hashGenerator.ComputeHash(Encoding.UTF8.GetBytes(input));
 
-                //SHA-256 is 256 bits long, thus 32 byte...
-                if (toBase64)
+                if (!optimize)
                 {
-                    //Uses More space (256/6=~43 chars) but more readable
-                    return Convert.ToBase64String(hash);
+                    return BitConverter.ToString(hash);
                 }
 
-                //With Latin1 (1byte per character), we have a possible conversion for storing
-                //into string type column in DB
+                //Latin1 is 1byte per character, thus 32 characters long hash (smaller than hexa)
                 return Encoding.Latin1.GetString(hash);
             }
         }
